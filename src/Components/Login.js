@@ -1,12 +1,14 @@
 import React, {Component} from 'react';
 import Axios from 'axios';
 import {Formik} from 'formik';
+import {useHistory} from 'react-router-dom';
+   
 
 
 export default class Login extends Component{
     
     render(){
- 
+        console.log(this.props);
         return (<Formik 
             initialValues={{ email: '', password: '' }} 
             validate={values =>{
@@ -29,9 +31,8 @@ export default class Login extends Component{
                             }
                         }).then(function (response) {
                         console.log(response);
-                        console.log(values.email, values.password);
-                        // this.props.loggedIn.bind(this, values.email, values.password);
-                        }).catch(function(error){
+                        }).then(this.props.loggedIn.bind(this, values.email, values.password))
+                        .catch(function(error){
                             if(error.response.status === 401){
                             alert(error);
                             }   
