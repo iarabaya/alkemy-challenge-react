@@ -7,20 +7,24 @@ export default function Hero({hero}) {
                 <img src={hero.image.url} className="card-img-top" alt={hero.name}/>
                 <div className="card-body">
                     <h5 className="card-title">{hero.name}</h5>
-                    <p className="card-text">algo del superheroe</p>
+                    <p className="card-text">Alignment: {hero.biography.alignment}</p>
                 </div>
                 <ul className="list-group list-group-flush">
-                    <li className="list-group-item">An item</li>
-                    <li className="list-group-item">A second item</li>
-                    <li className="list-group-item">A third item</li>
+                    <li className="list-group-item">
+                        Intelligence:{hero.powerstats.intelligence},
+                        Strength:{hero.powerstats.strength},
+                        Speed:{hero.powerstats.speed}
+                        </li>
+                    <li className="list-group-item">
+                        Durability:{hero.powerstats.durability},
+                        Power:{hero.powerstats.power},
+                        Combat: {hero.powerstats.combat}
+                        </li>
                 </ul>
                 <div className="card-body">
-                    <button className="btn btn-primary">Añadir</button>
+                    <button className="btn btn-primary">Add to Team</button>
                 </div>
             </div>
         </div>
     )
 }
-/*
-
-*/ 
