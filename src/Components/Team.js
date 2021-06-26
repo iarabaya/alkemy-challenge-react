@@ -1,17 +1,15 @@
 import React, { useState } from 'react';
-import Hero from './Hero';
 import TeamMember from './TeamMember';
 
-export default function Team({heroes}) {
-   const [team, setTeam] = useState([]);
-    // const orderedHeroes = heroes.sort((a,b) => {return a.id - b.id});
-
-    const selectedHero = () =>{}
+export default function Team({team}) {
 
     return (
         <div>
-            Para elegir: 
-            {/* {orderedHeroes.map((hero) =><Hero key={hero.id} hero={hero}/> )} */}
+            <h1>My Team: </h1>
+            {team.map((teamMember)=>{ return <TeamMember key={teamMember.id} teamMember={teamMember}/>})}
         </div>
     )
 }
+
+// const orderedHeroes = heroes.sort((a,b) => {return a.id - b.id});
+// {orderedHeroes.map((hero) =><Hero key={hero.id} hero={hero}/> )}

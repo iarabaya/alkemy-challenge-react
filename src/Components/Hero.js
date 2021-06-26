@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function Hero({hero}) {
+export default function Hero({hero, addToTeam}) {
     return (
         <div>
             <div className="card" style={{width: '18rem'}}>
@@ -22,7 +22,7 @@ export default function Hero({hero}) {
                         </li>
                 </ul>
                 <div className="card-body">
-                    <button className="btn btn-primary">Add to Team</button>
+                    <button className="btn btn-primary" onClick={addToTeam}>Add to Team</button>
                 </div>
             </div>
         </div>

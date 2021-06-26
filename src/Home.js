@@ -8,63 +8,52 @@ import Hero from './components/Hero';
 
 export default function Home() {
     const [heroesIds, setHeroesIds] = useState([]);
-    const [selectedCharacter, setSelectedCharacter] = useState();
+    const [selectedCharacterId, setSelectedCharacterId] = useState();
     const [hero, setHero] = useState();
+    const [team, setTeam] = useState([]);
 
     useEffect(()=>{
         setHeroesIds(heroesjson);
       },[heroesIds]);
 
     useEffect(()=>{
-        if(selectedCharacter){
-            axios({
-                    url: '',
-                    method: 'get',
-                    baseURL: `https://superheroapi.com/api.php/10223708144224688/${selectedCharacter}` ,
-                    headers: {'X-Requested-With': 'XMLHttpRequest'}
-        
-                }).then(response => {
-                    const hero =  response.data;
-                    setHero(hero);
-                }).catch(error => console.log(error)); 
-            
+        if(selectedCharacterId){
+            getHero(selectedCharacterId);
         }
-    },[hero, selectedCharacter])
+    },[selectedCharacterId])
 
-    const getHero = async (name) =>{
+    const getHero = async (id) =>{
     let hero;
         try {
-        const response = await axios.get(`https://superheroapi.com/api.php/10223708144224688/${name}`);
-        hero = await JSON.stringify(response);
+            const response = await axios.get(`https://superheroapi.com/api.php/10223708144224688/${id}`);
+            hero = await response;
+            setHero(hero.data);
+            return hero;
         } catch (error) {
             console.log(error);
         }
         return hero;
     }
 
-    const getSelectedCharacter = (character) => {
-        setSelectedCharacter(character);
+    const getSelectedCharacter = (characterId) => {
+        setSelectedCharacterId(characterId);
     };
+
+    const addToTeam = () =>{
+        if(team.length < 7){
+            setHero({...hero, team:true});
+            setTeam((prevHeroes) => [...prevHeroes, hero]);
+        }else{
+            alert("you've reached the maximum members allowed in a team");
+        }  
+    }
 
     return (
         <div>
             <h1>pagina home</h1>
-            <SearchForm heroesIds={heroesIds} getSelectedCharacter={getSelectedCharacter}/>
-            {hero? <Hero hero={hero}/> : <span>Sin resultado</span>}      
+            <SearchForm heroesIds={heroesIds} getSelectedCharacter={getSelectedCharacter} getHero={getHero}/>
+            {hero? <Hero hero={hero} addToTeam={addToTeam}/> : <span>Sin resultado</span>}  
+            <Team team={team}/>
         </div>
     )
 }
-
-   // useEffect(()=>{
-    //         axios({
-    //             url: '',
-    //             method: 'get',
-    //             baseURL: `https://superheroapi.com/api.php/10223708144224688/${selectedCharacter}` ,
-    //             headers: {'X-Requested-With': 'XMLHttpRequest'}
-    
-    //         }).then(response => {
-    //             const hero =  response.data;
-    //             setCharacter(hero);
-    //             setHeroes((prevHeroes) => [...prevHeroes, hero]);
-    //         }).catch(error => console.log(error));  
-    // }, [selectedCharacter]);
