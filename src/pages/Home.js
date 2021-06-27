@@ -66,10 +66,18 @@ export default function Home({authorization}) {
 
     return (
         <div>
-            <h1>pagina home</h1>
-            <SearchForm heroesIds={heroesIds} getSelectedCharacter={getSelectedCharacter} getHero={getHero}/>
-            {hero? <Hero hero={hero} addToTeam={addToTeam}/> : <span>Sin resultado</span>}  
-            <Team team={team} toDelete={toDelete}/>
+            <h1 className="text-center">Home</h1>
+            <div>
+                <SearchForm heroesIds={heroesIds} getSelectedCharacter={getSelectedCharacter} getHero={getHero}/>
+            </div>
+            <div className="row">
+                <div className="col-sm-6">
+                    {hero? <Hero hero={hero} addToTeam={addToTeam}/> : <span>Sin resultado</span>}  
+                </div>
+                <div className="col-sm-6">
+                    <Team team={team} toDelete={toDelete}/>
+                </div>
+            </div>    
         </div>
     )
 }

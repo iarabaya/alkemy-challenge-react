@@ -14,7 +14,7 @@ export default function SearchForm({heroesIds, getSelectedCharacter,getHero}) {
     }
 
     return (
-        <div>
+        <div className="text-center">
             <form onSubmit={handleSubmit}>
                 <label>Select your character by name:
                     <select className="form-select" aria-label="Default select example" defaultValue={1} onChange={handleChange} required size={4}>

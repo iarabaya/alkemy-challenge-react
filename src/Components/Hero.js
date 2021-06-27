@@ -2,8 +2,7 @@ import React from 'react'
 
 export default function Hero({hero, addToTeam}) {
     return (
-        <div>
-            <div className="card text-center" style={{width: '18rem'}}>
+            <div className="card text-center m-3" style={{width: '18rem'}}>
                 <img src={hero.image.url} className="card-img-top" alt={hero.name}/>
                 <div className="card-body">
                     <h5 className="card-title">{hero.name}</h5>
@@ -33,6 +32,5 @@ export default function Hero({hero, addToTeam}) {
                     </div>
                 </div>
             </div>
-        </div>
     )
 }

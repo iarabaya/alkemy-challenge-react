@@ -8,7 +8,6 @@ export default function Login({loggedIn, authorized}) {
 
     return (
         <div>
-            <h1>Log In</h1>
             <Formik 
                 initialValues={{ 
                     email: '', 
@@ -47,22 +46,33 @@ export default function Login({loggedIn, authorized}) {
                     }, 300);
             }}>
                 <Form>
-                    <label htmlFor="email">Email</label>
-                    <Field
-                        id="email"
-                        name="email"
-                        placeholder="jane@acme.com"
-                        type="email"
-                    />
-
-                    <label htmlFor="password">Password:</label>
-                    <Field 
-                        id="password" 
-                        name="password" 
-                        placeholdee="password" 
-                        type="password"
-                    />
-                    <button type="submit">Submit</button>
+                     <div className="container text-center" >
+                        <h1>Log In</h1>
+                        <div className="form-floating md-4">
+                                <Field
+                                    className="form-control"
+                                    id="email"
+                                    name="email"
+                                    placeholder="jane@acme.com"
+                                    type="email"
+                                />
+                                <label htmlFor="email">Email</label>
+                            </div>
+                            <div className="form-floating md-4">
+                                
+                                <Field 
+                                    className="form-control"
+                                    id="password" 
+                                    name="password" 
+                                    placeholdee="password" 
+                                    type="password"
+                                />
+                                <label htmlFor="password">Password</label>
+                            </div>
+                        <div className="col-12">
+                            <button type="submit"  className="btn btn-primary">Submit</button>
+                        </div>
+                     </div>
                 </Form>
             
             </Formik>
