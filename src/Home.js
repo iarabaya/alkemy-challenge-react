@@ -48,12 +48,23 @@ export default function Home() {
         }  
     }
 
+    const deleteFromTeam = (id) =>{
+        let newTeam = [...team]
+        newTeam = team.filter((member) => member.id !== id);
+        setTeam(newTeam);
+    }
+
+    const toDelete = (id) =>{
+        alert('you deleted member : ' + id);
+        deleteFromTeam(id);
+    }
+
     return (
         <div>
             <h1>pagina home</h1>
             <SearchForm heroesIds={heroesIds} getSelectedCharacter={getSelectedCharacter} getHero={getHero}/>
             {hero? <Hero hero={hero} addToTeam={addToTeam}/> : <span>Sin resultado</span>}  
-            <Team team={team}/>
+            <Team team={team} toDelete={toDelete}/>
         </div>
     )
 }

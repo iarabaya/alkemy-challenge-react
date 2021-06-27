@@ -1,12 +1,11 @@
-import React, { useState } from 'react';
 import TeamMember from './TeamMember';
 
-export default function Team({team}) {
+export default function Team({team, toDelete}) {
 
     return (
         <div>
             <h1>My Team: </h1>
-            {team.map((teamMember)=>{ return <TeamMember key={teamMember.id} teamMember={teamMember}/>})}
+            {team.map((teamMember)=>{ return <TeamMember key={teamMember.id} teamMember={teamMember} toDelete={toDelete}/>})}
         </div>
     )
 }
