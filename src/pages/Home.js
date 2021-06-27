@@ -1,12 +1,13 @@
 import React, { useState,useEffect } from 'react';
 import {Redirect} from 'react-router-dom';
-import Team from './components/Team';
+import Team from '../components/Team';
 import axios from 'axios';
-import heroesjson from './data/heroesIds.json';
-import SearchForm from './components/SearchForm';
-import Hero from './components/Hero';
+import heroesjson from '../data/heroesIds.json';
+import SearchForm from '../components/SearchForm';
+import Hero from '../components/Hero';
 
-export default function Home() {
+
+export default function Home({authorization}) {
     const [heroesIds, setHeroesIds] = useState([]);
     const [selectedCharacterId, setSelectedCharacterId] = useState();
     const [hero, setHero] = useState();
@@ -21,6 +22,10 @@ export default function Home() {
             getHero(selectedCharacterId);
         }
     },[selectedCharacterId])
+
+    if(!authorization){
+        return <Redirect to="/"/> 
+     }
 
     const getHero = async (id) =>{
     let hero;
