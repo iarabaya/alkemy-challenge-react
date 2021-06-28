@@ -40,7 +40,7 @@ export default function App() {
         <div className="content">
           <Switch>
               <Route path="/Home">
-                {!logIn?<Redirect to="/"/>:<Home />}
+                {!logIn?<Redirect to="/"/>:<Home logIn={logIn}/>}
               </Route>            
               <Route exact path="/">
               {logIn? <Redirect to="/Home"/>:<Login loggedIn={loggedIn}/>}

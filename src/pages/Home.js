@@ -6,7 +6,7 @@ import SearchForm from '../components/SearchForm';
 import Hero from '../components/Hero';
 
 
-export default function Home({authorization}) {
+export default function Home({logIn}) {
     const [heroesIds, setHeroesIds] = useState([]);
     const [selectedCharacterId, setSelectedCharacterId] = useState();
     const [hero, setHero] = useState();
@@ -61,13 +61,13 @@ export default function Home({authorization}) {
 
     return (
         <div>
-            <h1 className="text-center">Home</h1>
+            <h1 className="text-center">Hello {logIn.email}!</h1>
             <div>
                 <SearchForm heroesIds={heroesIds} getSelectedCharacter={getSelectedCharacter} getHero={getHero}/>
             </div>
             <div className="row">
                 <div className="col-sm-6">
-                    {hero? <Hero hero={hero} addToTeam={addToTeam}/> : <span>Sin resultado</span>}  
+                    {hero? <Hero hero={hero} addToTeam={addToTeam}/> : <div className="alert alert-secondary" role="alert">You haven't looked for any hero yet.</div>}  
                 </div>
                 <div className="col-sm-6">
                     <Team team={team} toDelete={toDelete}/>
