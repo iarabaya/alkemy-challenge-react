@@ -43,8 +43,8 @@ export default function App() {
                 {!logIn?<Redirect to="/"/>:<Home logIn={logIn}/>}
               </Route>            
               <Route exact path="/">
-              {logIn? <Redirect to="/Home"/>:<Login loggedIn={loggedIn}/>}
-            </Route>
+                {logIn? <Redirect to="/Home"/>:<Login loggedIn={loggedIn}/>}
+              </Route>
           </Switch>
         </div>
       </div>

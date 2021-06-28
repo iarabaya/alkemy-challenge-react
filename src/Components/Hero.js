@@ -4,16 +4,12 @@ import DetailsModal from './DetailsModal';
 export default function Hero({hero, addToTeam}) {
 
     return (
-            <div className="card text-center m-3" style={{width: '18rem'}}>
+            <div className="card text-center" style={{width: '18rem'}}>
                 <img src={hero.image.url} className="card-img-top" alt={hero.name}/>
                 <div className="card-body">
                     <h5 className="card-title">{hero.name}</h5>
                     <p className="card-subtitle mb-2 text-muted">Alignment: {hero.biography.alignment.toUpperCase()}</p>
                 </div>
-                <div>
-                    
-                </div>
-                
                 <ul className="list-group list-group-flush">
                     <li><h5>Powerstats:</h5></li>
                     <li className="list-group-item">

@@ -94,12 +94,12 @@ export default function Home({logIn}) {
             <div>
                 <SearchForm heroesIds={heroesIds} getSelectedCharacter={getSelectedCharacter} getHero={getHero}/>
             </div>
-            <div className="row">
-                <div className="col-sm-6">
-                    <h1>Search:</h1>
-                    {hero? <Hero hero={hero} addToTeam={addToTeam}/> : <div className="alert alert-secondary" role="alert">You haven't looked for any hero yet.</div>}  
+            <div className="d-flex justify-content-evenly">
+                <div >
+                    <h1 className="p-2 bd-highlight">Search:</h1>
+                    {hero? <Hero hero={hero} addToTeam={addToTeam}/> : <div className="alert alert-secondary" role="alert">You haven't looked for any hero yet.</div>}
                 </div>
-                <div className="col-sm-6">
+                <div >
                     <Team team={team} toDelete={toDelete}/>
                 </div>
             </div>    
