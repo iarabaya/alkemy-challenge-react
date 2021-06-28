@@ -11,7 +11,7 @@ export default function TeamMember({teamMember, toDelete}) {
         if(teamMember){
             let color;
             if(teamMember.biography.alignment === 'good'){
-                color = "card text-white bg-success mb-3";
+                color = "card text-white bg-success mb-3 ";
                 return memberCard(teamMember, color);
              }else{
                  color = "card text-white bg-danger mb-3";
@@ -21,7 +21,7 @@ export default function TeamMember({teamMember, toDelete}) {
     }
 
     const memberCard = (teamMember, color) =>{
-        return (<div className={color} style={{maxWidth:'18rem'}}>
+        return (<div className={color} style={{maxWidth:'20rem'}}>
                     <div className="card-header">Alias: {teamMember.biography.aliases[0]}</div>
                     <div className="card-body">
                         <h5 className="card-title">Name: {teamMember.name}</h5>

@@ -41,10 +41,10 @@ useEffect(()=>{
 },[team])
 
     return (
-        <div className="p-2 bd-highlight">
+        <div className=" bd-highlight">
             <h4 className="text-muted">Team Powerstats Table</h4>
             <div className="alert alert-secondary" role="alert">{teamType? teamType.toUpperCase() : 'no definido'} Team Type</div>
-            <table className="table p-2 bg-light border">
+            <table className="table bg-light border">
                 <thead>
                     <tr>
                     <th scope="col">Name</th>
