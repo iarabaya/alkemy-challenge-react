@@ -1,13 +1,13 @@
 import React, {useState, useEffect} from 'react';
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Switch, Redirect} from 'react-router-dom';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Navbar from './components/Navbar';
 
 const KEY = 'superheroApp.token';
+
 export default function App() {
   const [logIn, setLog] = useState();
-  const [authorization, setAuthorization] = useState();
 
   const loggedIn = (email, password, token) =>{
     const logged = (email !=="" && password !=="");
@@ -15,10 +15,17 @@ export default function App() {
       console.log(logged);
   }
 
+  const logOut = () =>{
+    setLog();
+  }
+
   useEffect(()=>{
-    const loggedIn = JSON.parse(localStorage.getItem(KEY));
-    if(loggedIn){
-      setLog(loggedIn);
+    let local = localStorage.getItem(KEY);
+    if(local !== 'undefined'){
+      const localData = JSON.parse(local);
+      if(localData){
+        setLog(localData);
+      }
     }
   },[])
   
@@ -26,22 +33,18 @@ export default function App() {
     localStorage.setItem(KEY,JSON.stringify(logIn));
   },[logIn])
 
-  const authorized = () =>{
-      if(logIn === 'undefined'){
-        setAuthorization(false);
-      }else{
-        setAuthorization(true);
-      }
-  }
-
   return (
     <Router>
       <div className="App">
-        <Navbar/>
+        <Navbar logOut={logOut}/>
         <div className="content">
           <Switch>
-            <Route path="/Home" component={() => <Home authorization={authorization}/>}/>
-            <Route exact path="/" component={() => <Login loggedIn={loggedIn} authorized={authorized}/>}/>
+              <Route path="/Home">
+                {!logIn?<Redirect to="/"/>:<Home />}
+              </Route>            
+              <Route exact path="/">
+              {logIn? <Redirect to="/Home"/>:<Login loggedIn={loggedIn}/>}
+            </Route>
           </Switch>
         </div>
       </div>

@@ -17,7 +17,7 @@ export default function TeamMember({teamMember, toDelete}) {
     }
 
     const goodMember = (teamMember) =>{
-        return (<div className="card text-white bg-success mb-3" style={{maxWidth:'18rem'}}>
+        return (<div className={"card text-white bg-success mb-3"} style={{maxWidth:'18rem'}}>
                     <div className="card-header">Alias: {teamMember.biography.aliases[0]}</div>
                     <div className="card-body">
                         <h5 className="card-title">Name: {teamMember.name}</h5>

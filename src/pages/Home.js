@@ -1,5 +1,4 @@
 import React, { useState,useEffect } from 'react';
-import {Redirect} from 'react-router-dom';
 import Team from '../components/Team';
 import axios from 'axios';
 import heroesjson from '../data/heroesIds.json';
@@ -22,10 +21,6 @@ export default function Home({authorization}) {
             getHero(selectedCharacterId);
         }
     },[selectedCharacterId])
-
-    if(!authorization){
-        return <Redirect to="/"/> 
-     }
 
     const getHero = async (id) =>{
     let hero;

@@ -1,7 +1,7 @@
 import React from 'react'
 import {Link} from 'react-router-dom';
 
-export default function Navbar() {
+export default function Navbar({logOut}) {
     return (
             <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
                 <div className="container-fluid">
@@ -16,7 +16,7 @@ export default function Navbar() {
                             <Link className="nav-link active" to="/Home">Home</Link>
                         </li>
                         <li className="nav-item btn btn-sm btn-outline-danger m-1">
-                            <button className="btn text-white" type="button">Log out</button>
+                            <button className="btn text-white" type="button" onClick={logOut}>Log out</button>
                         </li>
                     </ul>
                     </div>
