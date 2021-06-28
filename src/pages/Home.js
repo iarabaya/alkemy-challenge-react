@@ -59,8 +59,6 @@ export default function Home({logIn}) {
             let repeated = team.some( member => member.id === hero.id);
             if(repeated){
                 throw new Error ("You can't have repeated heroes on your team");
-            }else{
-                console.log('no esta repetido, todo bien');
             }
         }
     }
@@ -75,7 +73,6 @@ export default function Home({logIn}) {
     const typeTeamLimit = () => {
         let goodMembers = team.filter(member => member.biography.alignment === 'good');
         let badMembers = team.filter(member => member.biography.alignment === 'bad');
-        console.log(goodMembers.length);
         if(goodMembers.length === 3){
             throw new Error ("You can only have 3 good members on your team, choose some bad ones.")
         }

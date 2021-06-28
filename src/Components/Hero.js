@@ -1,6 +1,8 @@
 import React from 'react'
+import DetailsModal from './DetailsModal';
 
 export default function Hero({hero, addToTeam}) {
+
     return (
             <div className="card text-center m-3" style={{width: '18rem'}}>
                 <img src={hero.image.url} className="card-img-top" alt={hero.name}/>
@@ -28,9 +30,10 @@ export default function Hero({hero, addToTeam}) {
                 <div className="card-footer">
                     <div className="btn-group" role="group" aria-label="options for member">
                         <button type="button" className="btn btn-primary" onClick={addToTeam}>Add to Team</button>
-                        <button type="button" className="btn btn-info">View details</button>
+                        <DetailsModal/>
                     </div>
                 </div>
+                
             </div>
     )
 }

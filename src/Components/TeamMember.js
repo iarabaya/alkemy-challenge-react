@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import DetailsModal from './DetailsModal';
 
 export default function TeamMember({teamMember, toDelete}) {
 
@@ -33,7 +34,7 @@ export default function TeamMember({teamMember, toDelete}) {
                         </p>
                         <div className="btn-group" role="group" aria-label="options for member">
                             <button type="button" className="btn btn-warning" onClick={handleDeleteClick}>Delete from team</button>
-                            <button type="button" className="btn btn-info">View details</button>
+                            <DetailsModal/>
                         </div>
                     </div>
                 </div>);
