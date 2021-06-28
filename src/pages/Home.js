@@ -42,7 +42,6 @@ export default function Home({logIn}) {
     const addToTeam = () =>{
         try {
                 repeatedHero();
-                teamLengthLimit();
                 typeTeamLimit();
 
                 setHero({...hero, team:true});
@@ -63,23 +62,19 @@ export default function Home({logIn}) {
         }
     }
 
-    const teamLengthLimit = () =>{
-        if(team.length > 7){
-            throw new Error ("You've reached the maximum members allowed in a team");
-        }
-
-    }
-
     const typeTeamLimit = () => {
-        let goodMembers = team.filter(member => member.biography.alignment === 'good');
-        let badMembers = team.filter(member => member.biography.alignment === 'bad');
-        if(goodMembers.length === 3){
-            throw new Error ("You can only have 3 good members on your team, choose some bad ones.")
+        if(team.length === 6){
+            throw new Error ("You've reached the maximum members allowed in a team");
+        }else{
+            let goodMembers = team.filter(member => member.biography.alignment === 'good');
+            let badMembers = team.filter(member => member.biography.alignment === 'bad');
+            if(goodMembers.length > 2 && hero.biography.alignment === 'good'){
+                throw new Error ("You can only have 3 good members on your team, choose some bad ones.")
+            }
+            if(badMembers.length > 2 && hero.biography.alignment === 'bad'){
+                throw new Error ("You can only have 3 bad members on your team, choose some good ones.");
+            }
         }
-        if(badMembers.length === 3){
-            throw new Error ("You can only have 3 bad members on your team, choose some good ones.");
-        }
-
     }
 
     const deleteFromTeam = (id) =>{
@@ -101,6 +96,7 @@ export default function Home({logIn}) {
             </div>
             <div className="row">
                 <div className="col-sm-6">
+                    <h1>Search:</h1>
                     {hero? <Hero hero={hero} addToTeam={addToTeam}/> : <div className="alert alert-secondary" role="alert">You haven't looked for any hero yet.</div>}  
                 </div>
                 <div className="col-sm-6">
