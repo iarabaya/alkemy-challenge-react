@@ -40,12 +40,49 @@ export default function Home({logIn}) {
     };
 
     const addToTeam = () =>{
-        if(team.length < 7){
-            setHero({...hero, team:true});
-            setTeam((prevHeroes) => [...prevHeroes, hero]);
-        }else{
-            alert("you've reached the maximum members allowed in a team");
-        }  
+        try {
+                repeatedHero();
+                teamLengthLimit();
+                typeTeamLimit();
+
+                setHero({...hero, team:true});
+                setTeam((prevHeroes) => [...prevHeroes, hero]);
+              
+        } catch (error) {
+            alert(error.message);
+        }
+        
+    }
+
+    const repeatedHero = () =>{
+        if(team.length !== 0){
+            let repeated = team.some( member => member.id === hero.id);
+            if(repeated){
+                throw new Error ("You can't have repeated heroes on your team");
+            }else{
+                console.log('no esta repetido, todo bien');
+            }
+        }
+    }
+
+    const teamLengthLimit = () =>{
+        if(team.length > 7){
+            throw new Error ("You've reached the maximum members allowed in a team");
+        }
+
+    }
+
+    const typeTeamLimit = () => {
+        let goodMembers = team.filter(member => member.biography.alignment === 'good');
+        let badMembers = team.filter(member => member.biography.alignment === 'bad');
+        console.log(goodMembers.length);
+        if(goodMembers.length === 3){
+            throw new Error ("You can only have 3 good members on your team, choose some bad ones.")
+        }
+        if(badMembers.length === 3){
+            throw new Error ("You can only have 3 bad members on your team, choose some good ones.");
+        }
+
     }
 
     const deleteFromTeam = (id) =>{
