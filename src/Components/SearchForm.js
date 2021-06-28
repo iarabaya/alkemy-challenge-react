@@ -9,7 +9,6 @@ export default function SearchForm({heroesIds, getSelectedCharacter,getHero}) {
 
     const handleSubmit = (event) =>{
         event.preventDefault();
-        alert('you selected ' + selectedItem);
         getSelectedCharacter(selectedItem);
     }
 
